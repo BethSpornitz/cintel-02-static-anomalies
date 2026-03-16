@@ -1,37 +1,37 @@
 """
-anomaly_detector_case.py - Project script (example).
+anomaly_detector_bethspornitz.py - Static anomaly detection pipeline.
 
 Author: Beth Spornitz
-Date: 2026-03-013
+Date: 2026-03-13
 
 Static Data
 
-- Data is taken from a pediatric clinic's patient records.
+- Data is taken from an adult clinic dataset.
 - The data is static, meaning it does not change over time and is not updated with new records.
-- The clinic works with children from birth to 16 years old.
 - Each row represents a patient visit with two key measurements:
   - age_years: The patient's age in years.
   - height_inches: The patient's height in inches.
 
 Purpose
 
-- Read the data from a CSV (comma-separated values) file.
-- Detect anomalies.
-- Log the pipeline process to assist with debugging and transparency.
+- Read adult clinic data from a CSV file.
+- Detect anomalies in age and height values.
+- Add an anomaly_reason column to explain why a record was flagged.
+- Log the pipeline process for debugging and transparency.
 
 Paths (relative to repo root)
 
-    INPUT FILE: data/clinic_data_case.csv
-    OUTPUT FILE: artifacts/anomalies_case.csv
+    INPUT FILE: data/clinic_data_bethspornitz.csv
+    OUTPUT FILE: artifacts/anomalies_bethspornitz.csv
 
 Terminal command to run this file from the root project folder
 
     uv run python -m cintel.anomaly_detector_bethspornitz
 
 OBS:
-  Don't edit this file - it should remain a working example.
-  Use as much of this code as you can when creating your own pipeline script,
-  and change the logic to detect anomalies and define thresholds as needed for your project.
+  This file is my modified version of the instructor example.
+  I updated the anomaly thresholds for adult clinic data
+  and added an anomaly_reason column to the output.
 """
 
 # === DECLARE IMPORTS (packages we will use in this project) ===
@@ -110,7 +110,7 @@ def main() -> None:
     # ----------------------------------------------------
     # An anomaly is any value greater than the threshold we set.
     # Domain rule for this example:
-    # Anything above this value is suspicious.
+    # Anything above  or below these values are suspicious.
     LOG.info("Studying adult clinic ages and heights to find anomalies...")
 
     MIN_REASONABLE_AGE: Final[float] = 18.0
@@ -124,8 +124,8 @@ def main() -> None:
     LOG.info(f"MAX_REASONABLE_HEIGHT: {MAX_REASONABLE_HEIGHT} in inches")
     # Create a new DataFrame named anomalies_df that contains
     # only the rows where EITHER
-    # the age is TOO HIGH OR
-    # the height is TOO HIGH.
+    # the age is TOO HIGH OR TOO LOW
+    # the height is TOO HIGH OR TOO LOW
     # A single pipe (|) is the OR operator in polars.
     # We will use greater than or equal to (>=) to find values at or above the threshold.
     anomalies_df: pl.DataFrame = df.with_columns(
