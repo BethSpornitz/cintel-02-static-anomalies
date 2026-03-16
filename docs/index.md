@@ -21,19 +21,19 @@ to get these projects running on your machine.
 ## Custom Project
 
 ### Dataset
-The dataset used for this project contains patient records from a clinic and includes two variables: age_years and height_inches. Each row represents a patient visit with the patient’s age in years and height in inches.
+The dataset used for this project contains adult clinic patient records with two measurements: age_years and height_inches. Each row represents a patient visit.
 
 ### Signals
-The primary signals used were age_years and height_inches from the dataset. I also created a derived signal called anomaly_reason to explain why a record was identified as an anomaly.
+The primary signals used were age_years and height_inches. I also created a derived signal called anomaly_reason to explain why a record was identified as an anomaly.
 
 ### Experiments
-I modified the anomaly detection pipeline to better fit adult clinic data. I introduced both upper and lower thresholds for age and height and added a column called anomaly_reason that labels whether the anomaly was caused by unrealistic age or height values.
+I adapted the anomaly detection pipeline from the pediatric example to an adult clinic context by introducing realistic lower and upper bounds for age and height and adding an anomaly_reason column.
 
 ### Results
-After running the modified pipeline, two records were detected as anomalies. Both anomalies were due to unrealistic age values (ages 102 and 118). No height anomalies were detected using the defined thresholds.
+The pipeline detected two anomalies caused by unrealistic age values (102 and 118). No height anomalies were detected using the defined thresholds.
 
 ### Interpretation
-The results show that the anomaly detection pipeline can successfully identify unrealistic patient data values. Adding the anomaly_reason column improves the interpretability by clearly identifying the cause of each anomaly. This approach would help analysts or data quality teams quickly identify potential data entry issues in larger datasets.
+This modification demonstrates how anomaly detection rules must be adapted to the domain of the data. Adding the anomaly_reason column improves interpretability and would help analysts quickly identify data quality issues in larger datasets.
 
 ## Additional Resources
 
