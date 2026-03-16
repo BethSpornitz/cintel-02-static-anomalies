@@ -111,27 +111,42 @@ def main() -> None:
     # An anomaly is any value greater than the threshold we set.
     # Domain rule for this example:
     # Anything above this value is suspicious.
-    LOG.info("Studying children's ages and heights to find anomalies...")
+    LOG.info("Studying adult clinic ages and heights to find anomalies...")
 
-    # x is age in years, so 16 is the upper limit for kids
-    MAX_REASONABLE_X_VALUE: Final[float] = 120.0
+    MIN_REASONABLE_AGE: Final[float] = 18.0
+    MAX_REASONABLE_AGE: Final[float] = 100.0
+    MIN_REASONABLE_HEIGHT: Final[float] = 48.0
+    MAX_REASONABLE_HEIGHT: Final[float] = 84.0
 
-    # y is height in inches, so maybe 6 feet (72 inches) is a reasonable upper limit
-    MAX_REASONABLE_Y_VALUE: Final[float] = 84.0
-
-    LOG.info(f"MAX_REASONABLE_X_VALUE: {MAX_REASONABLE_X_VALUE} in years")
-    LOG.info(f"MAX_REASONABLE_Y_VALUE: {MAX_REASONABLE_Y_VALUE} in inches")
-
+    LOG.info(f"MIN_REASONABLE_AGE: {MIN_REASONABLE_AGE} in years")
+    LOG.info(f"MAX_REASONABLE_AGE: {MAX_REASONABLE_AGE} in years")
+    LOG.info(f"MIN_REASONABLE_HEIGHT: {MIN_REASONABLE_HEIGHT} in inches")
+    LOG.info(f"MAX_REASONABLE_HEIGHT: {MAX_REASONABLE_HEIGHT} in inches")
     # Create a new DataFrame named anomalies_df that contains
     # only the rows where EITHER
     # the age is TOO HIGH OR
     # the height is TOO HIGH.
     # A single pipe (|) is the OR operator in polars.
     # We will use greater than or equal to (>=) to find values at or above the threshold.
-    anomalies_df: pl.DataFrame = df.filter(
-        (pl.col("age_years") >= MAX_REASONABLE_X_VALUE)
-        | (pl.col("height_inches") >= MAX_REASONABLE_Y_VALUE)
-    )
+    anomalies_df: pl.DataFrame = df.with_columns(
+        pl.when(
+            (pl.col("age_years") < MIN_REASONABLE_AGE)
+            & (pl.col("height_inches") < MIN_REASONABLE_HEIGHT)
+        )
+        .then(pl.lit("age and height anomaly"))
+        .when(
+            (pl.col("age_years") < MIN_REASONABLE_AGE)
+            | (pl.col("age_years") > MAX_REASONABLE_AGE)
+        )
+        .then(pl.lit("age anomaly"))
+        .when(
+            (pl.col("height_inches") < MIN_REASONABLE_HEIGHT)
+            | (pl.col("height_inches") > MAX_REASONABLE_HEIGHT)
+        )
+        .then(pl.lit("height anomaly"))
+        .otherwise(None)
+        .alias("anomaly_reason")
+    ).filter(pl.col("anomaly_reason").is_not_null())
 
     LOG.info(f"Count of anomalies found: {anomalies_df.height}")
 

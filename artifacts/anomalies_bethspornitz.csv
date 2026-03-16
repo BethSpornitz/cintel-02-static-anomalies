@@ -1,1 +1,3 @@
-age_years,height_inches
+age_years,height_inches,anomaly_reason
+102,60,age anomaly
+118,67,age anomaly
