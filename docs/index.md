@@ -18,23 +18,79 @@ to get these projects running on your machine.
 - **Your Files** - how to copy the example and create your version
 - **Glossary** - project terms and concepts
 
-## Custom Project
-
-### Dataset
-The dataset used for this project contains adult clinic patient records with two measurements: age_years and height_inches. Each row represents a patient visit.
-
-### Signals
-The primary signals used were age_years and height_inches. I also created a derived signal called anomaly_reason to explain why a record was identified as an anomaly.
-
-### Experiments
-I adapted the anomaly detection pipeline from the pediatric example to an adult clinic context by introducing realistic lower and upper bounds for age and height and adding an anomaly_reason column.
-
-### Results
-The pipeline detected two anomalies caused by unrealistic age values (102 and 118). No height anomalies were detected using the defined thresholds.
-
-### Interpretation
-This modification demonstrates how anomaly detection rules must be adapted to the domain of the data. Adding the anomaly_reason column improves interpretability and would help analysts quickly identify data quality issues in larger datasets.
-
 ## Additional Resources
 
 - [Suggested Datasets](https://denisecase.github.io/pro-analytics-02/reference/datasets/cintel/)
+
+---
+
+### Dataset 1: Adult Clinic Data
+
+#### Dataset
+This dataset contains patient records from an adult clinic.
+Each row represents a patient visit and includes:
+
+- `age_years` – patient age
+- `height_inches` – patient height
+
+#### Signals
+Two signals were analyzed:
+
+- **age_years**
+- **height_inches**
+
+These values were evaluated against reasonable ranges for adult patients.
+
+#### Experiments
+The anomaly detection pipeline was modified to include minimum and maximum thresholds for both age and height.
+An additional column called `anomaly_reason` was created to indicate whether an anomaly was caused by age or height values outside expected limits.
+
+#### Results
+The pipeline detected two anomalies where the age values were extremely high (102 and 118 years).
+
+#### Interpretation
+This suggests either data entry errors or extremely rare cases. In a real clinical system, these records would be flagged for verification to make sure they were correct.
+
+---
+
+### Dataset 2: Transit Ridership Data
+
+#### Dataset
+This dataset represents daily transit ridership observations.
+Each row contains:
+
+- `day` – sequential day of observation
+- `rides` – total number of transit rides recorded that day
+
+#### Signals
+The primary signal analyzed was:
+
+- **rides** (daily ridership)
+
+#### Experiments
+A modified anomaly detection pipeline was created to identify unusually high ridership values.
+A threshold was set to detect ridership spikes that may represent unusual transit demand.
+
+#### Results
+The system detected ridership spikes on days where the number of rides exceeded the expected range.
+
+Example anomaly:
+
+| day | rides | anomaly_reason |
+|----|----|----|
+| 15 | 8000 | ridership spike |
+
+#### Interpretation
+The spike likely represents a special event or abnormal demand on the transit system for some reason. In the real world, this could trigger some sort of alert for teams monitoring transit volumes.
+
+---
+
+### Summary
+
+These experiments demonstrate that the same anomaly detection pipeline structure can be adapted for different domains by:
+
+- changing the dataset
+- modifying thresholds
+- adjusting the anomaly logic
+
+This flexibility is important for continuous intelligence systems.

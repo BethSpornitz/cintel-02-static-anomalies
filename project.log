@@ -160,3 +160,51 @@
 2026-03-16 13:26:22 | INFO | P2 | Pipeline executed successfully!
 2026-03-16 13:26:22 | INFO | P2 | ========================
 2026-03-16 13:26:22 | INFO | P2 | END main()
+2026-03-16 16:28:40 | INFO | P2 | === RUN START ===
+2026-03-16 16:28:40 | INFO | P2 | project=CINTEL
+2026-03-16 16:28:40 | INFO | P2 | repo_dir=cintel-02-static-anomalies
+2026-03-16 16:28:40 | INFO | P2 | python=3.14.2
+2026-03-16 16:28:40 | INFO | P2 | os=Windows 10
+2026-03-16 16:28:40 | INFO | P2 | shell=powershell
+2026-03-16 16:28:40 | INFO | P2 | cwd=.
+2026-03-16 16:28:40 | INFO | P2 | github_actions=False
+2026-03-16 16:28:40 | INFO | P2 | ========================
+2026-03-16 16:28:40 | INFO | P2 | START main()
+2026-03-16 16:28:40 | INFO | P2 | ========================
+2026-03-16 16:28:40 | INFO | P2 | ROOT_DIR = .
+2026-03-16 16:28:40 | INFO | P2 | DATA_FILE = data\transit_ridership.csv
+2026-03-16 16:28:40 | INFO | P2 | OUTPUT_FILE = artifacts\transit_anomalies.csv
+2026-03-16 16:28:40 | INFO | P2 | ARTIFACTS_DIR = artifacts
+2026-03-16 16:28:40 | INFO | P2 | Loaded 35 transit records
+2026-03-16 16:28:40 | INFO | P2 | Studying transit ridership data to find anomalies...
+2026-03-16 16:28:40 | INFO | P2 | MAX_REASONABLE_RIDES: 7000
+2026-03-16 16:28:41 | INFO | P2 | Count of anomalies found: 11
+2026-03-16 16:28:41 | INFO | P2 | Wrote anomalies file: C:\Repos\cintel-02-static-anomalies\artifacts\transit_anomalies.csv
+2026-03-16 16:28:41 | INFO | P2 | ========================
+2026-03-16 16:28:41 | INFO | P2 | Pipeline executed successfully!
+2026-03-16 16:28:41 | INFO | P2 | ========================
+2026-03-16 16:28:41 | INFO | P2 | END main()
+2026-03-16 16:32:36 | INFO | P2 | === RUN START ===
+2026-03-16 16:32:36 | INFO | P2 | project=CINTEL
+2026-03-16 16:32:36 | INFO | P2 | repo_dir=cintel-02-static-anomalies
+2026-03-16 16:32:36 | INFO | P2 | python=3.14.2
+2026-03-16 16:32:36 | INFO | P2 | os=Windows 10
+2026-03-16 16:32:36 | INFO | P2 | shell=powershell
+2026-03-16 16:32:36 | INFO | P2 | cwd=.
+2026-03-16 16:32:36 | INFO | P2 | github_actions=False
+2026-03-16 16:32:36 | INFO | P2 | ========================
+2026-03-16 16:32:36 | INFO | P2 | START main()
+2026-03-16 16:32:36 | INFO | P2 | ========================
+2026-03-16 16:32:36 | INFO | P2 | ROOT_DIR = .
+2026-03-16 16:32:36 | INFO | P2 | DATA_FILE = data\transit_ridership.csv
+2026-03-16 16:32:36 | INFO | P2 | OUTPUT_FILE = artifacts\transit_anomalies.csv
+2026-03-16 16:32:36 | INFO | P2 | ARTIFACTS_DIR = artifacts
+2026-03-16 16:32:36 | INFO | P2 | Loaded 35 transit records
+2026-03-16 16:32:36 | INFO | P2 | Studying transit ridership data to find anomalies...
+2026-03-16 16:32:36 | INFO | P2 | MAX_REASONABLE_RIDES: 7900
+2026-03-16 16:32:36 | INFO | P2 | Count of anomalies found: 2
+2026-03-16 16:32:36 | INFO | P2 | Wrote anomalies file: C:\Repos\cintel-02-static-anomalies\artifacts\transit_anomalies.csv
+2026-03-16 16:32:36 | INFO | P2 | ========================
+2026-03-16 16:32:36 | INFO | P2 | Pipeline executed successfully!
+2026-03-16 16:32:36 | INFO | P2 | ========================
+2026-03-16 16:32:36 | INFO | P2 | END main()
