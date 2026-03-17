@@ -3,6 +3,12 @@
 [![Python 3.14+](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](#)
 [![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
 
+## Live Documentation
+
+View the hosted project documentation here:
+
+https://bethspornitz.github.io/cintel-02-static-anomalies/
+
 > Professional Python project for continuous intelligence.
 
 Continuous intelligence systems monitor data streams, detect change, and respond in real time.
@@ -32,13 +38,16 @@ the detection logic works.
 ## Data
 
 The example pipeline reads **pediatric clinic** age and height
-data from: `data/clinic_data_case.csv`.
-It creates reasonable thresholds and outputs
-**anomalies** (data outside the expected threshold).
+data from: `data/clinic_data_case.csv`. It creates reasonable thresholds
+and outputs **anomalies** (data outside the expected threshold).
 
-You'll copy the Python file and make it your own (see docs/your-files.md),
-and perform a similar analysis on `data/clinic_data_yourname.csv`
-given **adult clinic** age and height data.
+A second dataset `data/clinic_data_yourname.csv` contains **adult clinic**
+age and height data used to test a modified version of the anomaly
+detector.
+
+For the custom project, a separate dataset was analyzed to demonstrate
+how the same anomaly detection logic can be applied to a different
+type of real-world data.
 
 ## Working Files
 
@@ -116,6 +125,7 @@ uvx pre-commit run --all-files
 
 uv run python -m cintel.anomaly_detector_case
 uv run python -m cintel.anomaly_detector_bethspornitz
+uv run python -m cintel.anomaly_detector_transit
 
 uv run ruff format .
 uv run ruff check . --fix
