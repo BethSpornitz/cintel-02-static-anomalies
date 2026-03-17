@@ -23,6 +23,7 @@ to get these projects running on your machine.
 - [Suggested Datasets](https://denisecase.github.io/pro-analytics-02/reference/datasets/cintel/)
 
 ---
+## Custom Project
 
 ### Dataset 1: Adult Clinic Data
 
